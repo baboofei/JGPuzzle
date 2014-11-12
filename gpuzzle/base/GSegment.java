@@ -4,9 +4,9 @@ import java.util.*;
 
 public class GSegment implements GCollection
 {
-	private ArrayList<GByte> Contents;
+	private ArrayList<GeneBase> Contents;
 
-	public GSegment(GByte[] contents)
+	public GSegment(GeneBase[] contents)
 	{
 		for(int i = 0; i < contents.length; ++i)
 		{
@@ -14,12 +14,12 @@ public class GSegment implements GCollection
 		}
 	}
 
-	public ListIterator<GByte> GetContents()
+	public ListIterator<GeneBase> GetContents()
 	{
 		return this.Contents.listIterator();
 	}
 
-	public ListIterator<GByte> GetContents(int indexShift, GEndian endian)
+	public ListIterator<GeneBase> GetContents(int indexShift, GEndian endian)
 	{
 		if(endian == GEndian.Low)
 		{
@@ -27,9 +27,9 @@ public class GSegment implements GCollection
 		}
 		else
 		{
-			ArrayList<GByte> resultList = new ArrayList<GByte>();
+			ArrayList<GeneBase> resultList = new ArrayList<GeneBase>();
 
-			Iterator<GByte> resultReversed = this.Contents.iterator();
+			Iterator<GeneBase> resultReversed = this.Contents.iterator();
 
 			for(int i = 0; i < indexShift; ++i)
 			{
@@ -42,6 +42,7 @@ public class GSegment implements GCollection
 
 	public GSentence ToGSentence()
 	{
-		return new GSentence(this.GetContents());
+		// TODO : Implement this as slicing the GeneBases into GBytes
+		throw new UnsupportedOperationException("Not implemented");	
 	}
 }
