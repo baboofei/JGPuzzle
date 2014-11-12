@@ -1,5 +1,7 @@
 package gpuzzle.base;
 
+import java.util.*;
+
 public class GByte implements GObject
 {
 	public final GeneBase[] Bases;
@@ -14,12 +16,14 @@ public class GByte implements GObject
 
 	public boolean Equals(GByte otherByte)
 	{
-		return this.Bases.equals(otherByte.Bases);
+		// TODO : This need to be rewritten to use something like the KMP algorithm
+		throw new UnsupportedOperationException("Not implemented");	
 	}
 
 	public boolean QuickEquals(GByte otherByte)
 	{
-		return this.Hash == otherByte.Hash;
+		// TODO : This is not going to WORK! It will always return true.
+		throw new UnsupportedOperationException("Not implemented");	
 	}
 
 	public float Diff(GByte otherByte)

@@ -40,7 +40,8 @@ public class GSentence implements GCollection
 
 	public boolean Equals(GSentence otherSentence)
 	{
-		return this.Contents.equals(otherSentence.Contents);
+		// TODO : this need to be re-written to do something like the KMP algorithm
+		throw new UnsupportedOperationException("Not implemented");	
 	}
 
 	public boolean QuickEquals(GSentence otherSentence)
