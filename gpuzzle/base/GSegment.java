@@ -8,6 +8,8 @@ public class GSegment implements GCollection
 
 	public GSegment(GeneBase[] contents)
 	{
+		this.Contents = new ArrayList<GeneBase>();
+
 		for(int i = 0; i < contents.length; ++i)
 		{
 			this.Contents.add(contents[i]);
