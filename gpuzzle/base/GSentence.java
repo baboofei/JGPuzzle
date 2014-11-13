@@ -33,17 +33,65 @@ public class GSentence implements GCollection
 		}
 	}
 
+	public int GetSize()
+	{
+		return this.Contents.size();
+	}
 	// The following methods allows to compare / diff the GSentence object
 
 	public boolean Equals(GSentence otherSentence)
 	{
-		// TODO : this need to be re-written to do something like the KMP algorithm
-		throw new UnsupportedOperationException("Not implemented");	
+		// TODO : This need to be MUCH MUCH MORE efficient, this is super slow...
+		if(this.GetSize() == otherSentence.GetSize())
+		{
+			boolean isIdentical = false;
+
+			ListIterator<GByte> thisSentenceBytes = this.GetContents();
+			ListIterator<GByte> otherSentenceBytes = this.GetContents();
+
+			while(thisSentenceBytes.hasNext())
+			{
+				isIdentical = thisSentenceBytes.next().Equals(otherSentenceBytes.next());
+				
+				if(!isIdentical)
+				{
+					break;
+				}
+			}	
+
+			return isIdentical;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public boolean QuickEquals(GSentence otherSentence)
 	{
-		throw new UnsupportedOperationException("Not implemented");
+		if(this.GetSize() == otherSentence.GetSize())
+		{
+			boolean isIdentical = false;
+
+			ListIterator<GByte> thisSentenceBytes = this.GetContents();
+			ListIterator<GByte> otherSentenceBytes = this.GetContents();
+
+			while(thisSentenceBytes.hasNext())
+			{
+				isIdentical = thisSentenceBytes.next().QuickEquals(otherSentenceBytes.next());
+				
+				if(!isIdentical)
+				{
+					break;
+				}
+			}	
+
+			return isIdentical;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public float Diff(GSentence otherSentence)

@@ -16,14 +16,31 @@ public class GByte implements GObject
 
 	public boolean Equals(GByte otherByte)
 	{
-		// TODO : This need to be rewritten to use something like the KMP algorithm
-		throw new UnsupportedOperationException("Not implemented");	
+		if(this.Bases.length == otherByte.Bases.length)
+		{
+			boolean isIdentical = true;
+
+			for(int i = 0; i < this.Bases.length; ++i)
+			{
+				if(!(this.Bases[i] == (otherByte.Bases[i])))
+				{
+					isIdentical = false;	
+
+					break;
+				}
+			}	
+
+			return isIdentical;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public boolean QuickEquals(GByte otherByte)
 	{
-		// TODO : This is not going to WORK! It will always return true.
-		throw new UnsupportedOperationException("Not implemented");	
+		return this.Hash == otherByte.Hash;
 	}
 
 	public float Diff(GByte otherByte)

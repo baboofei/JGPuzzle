@@ -33,6 +33,12 @@ public class GSegment implements GCollection
 		}
 	}
 
+	// Return current size
+	public int GetSize()
+	{
+		return this.Contents.size();
+	}
+
 	// Creates a GSentence object and convert all current GeneBases in this.Contents to GBytes
 	public GSentence ToGSentence(int byteSize, int modPolicy)
 	{
