@@ -19,24 +19,15 @@ public class GSegment implements GCollection
 		return this.Contents.listIterator();
 	}
 
-	public ListIterator<GeneBase> GetContents(int indexShift, GEndian endian)
+	public ListIterator<GeneBase> GetContents(int sizeBytes, GEndian endian)
 	{
 		if(endian == GEndian.Low)
 		{
-			return this.Contents.listIterator(indexShift);
+			return this.Contents.subList(0, sizeBytes).listIterator();
 		}
 		else
 		{
-			ArrayList<GeneBase> resultList = new ArrayList<GeneBase>();
-
-			Iterator<GeneBase> resultReversed = this.Contents.iterator();
-
-			for(int i = 0; i < indexShift; ++i)
-			{
-				resultList.add(resultReversed.next());
-			}
-
-			return resultList.listIterator();
+			return this.Contents.subList(this.Contents.size() - sizeBytes, this.Contents.size()).listIterator();
 		}
 	}
 

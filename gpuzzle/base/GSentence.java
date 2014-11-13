@@ -15,24 +15,15 @@ public class GSentence implements GCollection
 		return this.Contents.listIterator();
 	}	
 
-	public ListIterator<GByte> GetContents(int indexShift, GEndian endian)
+	public ListIterator<GByte> GetContents(int sizeBytes, GEndian endian)
 	{
 		if(endian == GEndian.Low)
 		{
-			return this.Contents.listIterator(indexShift);
+			return this.Contents.subList(0, sizeBytes).listIterator();
 		}
 		else
 		{
-			ArrayList<GByte> resultList = new ArrayList<GByte>();
-
-			Iterator<GByte> resultReversed = this.Contents.iterator();
-
-			for(int i = 0; i < indexShift; ++i)
-			{
-				resultList.add(resultReversed.next());
-			}
-
-			return resultList.listIterator();
+			return this.Contents.subList(this.Contents.size() - sizeBytes, this.Contents.size()).listIterator();
 		}
 	}
 

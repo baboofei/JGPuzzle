@@ -5,5 +5,5 @@ import java.util.*;
 public interface GCollection extends GObject
 {
 	abstract ListIterator GetContents();
-	abstract ListIterator GetContents(int indexShift, GEndian endian);
+	abstract ListIterator GetContents(int sizeBytes, GEndian endian);
 }
