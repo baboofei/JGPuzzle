@@ -8,6 +8,12 @@ public class GSentence implements GCollection
 
 	public GSentence(ListIterator<GByte> source)
 	{
+		this.Contents = new ArrayList<GByte>();
+
+		while(source.hasNext())
+		{
+			Contents.add(source.next());
+		}
 	}
 
 	public ListIterator<GByte> GetContents()
