@@ -148,6 +148,21 @@ public class GSentence implements GCollection
 		return (float)(countIdentical / this.Contents.size());
 	}
 
+	public float[] ListDiff(GSentence otherSentence)
+	{
+		// TODO : Generate a list of how different each byte is
+	}
+
+	public float[] ListDiff(GSentence otherSentence, int partitionSize)
+	{
+
+	}
+
+	public float[] ListDiff(GSentence otherSentence, float[] partitionFraction)
+	{
+
+	}
+
 	// The following methods manipulate the GSentence object
 
 	public GSentence Sample(int sizeBytes, GEndian endian)
