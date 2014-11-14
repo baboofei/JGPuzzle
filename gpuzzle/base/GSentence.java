@@ -37,6 +37,12 @@ public class GSentence implements GCollection
 	{
 		return this.Contents.size();
 	}
+
+	public GSentence Clone()
+	{
+		return new GSentence(this.GetContents());
+	}
+
 	// The following methods allows to compare / diff the GSentence object
 
 	public boolean Equals(GSentence otherSentence)
@@ -192,7 +198,7 @@ public class GSentence implements GCollection
 		}
 
 		return result;
-	}
+	} 
 
 	public void Merge(int sizeBytes, GEndian endian, GSentence otherSentence)
 	{

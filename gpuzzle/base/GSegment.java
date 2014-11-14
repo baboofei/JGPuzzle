@@ -1,4 +1,4 @@
-package gpuzzle.base;
+ackage gpuzzle.base;
 
 import java.util.*;
 
@@ -41,6 +41,14 @@ public class GSegment implements GCollection
 		return this.Contents.size();
 	}
 
+	public GSegment Clone()
+	{
+		GeneBase[] resultBases = new GeneBase[this.GetSize()];
+
+		this.Contents.toArray(resultBases);
+
+		return new GSegment(resultBases);
+	}
 	// Creates a GSentence object and convert all current GeneBases in this.Contents to GBytes
 	public GSentence ToGSentence(int byteSize, int modPolicy)
 	{
