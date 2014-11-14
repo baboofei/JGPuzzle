@@ -18,20 +18,16 @@ public class GByte implements GObject
 	{
 		if(this.Bases.length == otherByte.Bases.length)
 		{
-			boolean isIdentical = true;
-
 			for(int i = 0; i < this.Bases.length; ++i)
 			{
-				if(!(this.Bases[i] == (otherByte.Bases[i])))
+				if(this.Bases[i] != otherByte.Bases[i])
 				{
-					isIdentical = false;	
-
-					break;
+					return false;
 				}
-			}	
+			}
 
-			return isIdentical;
-		}
+			return true;
+		}	
 		else
 		{
 			return false;

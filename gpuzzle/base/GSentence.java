@@ -44,22 +44,18 @@ public class GSentence implements GCollection
 		// TODO : This need to be MUCH MUCH MORE efficient, this is super slow...
 		if(this.GetSize() == otherSentence.GetSize())
 		{
-			boolean isIdentical = false;
-
 			ListIterator<GByte> thisSentenceBytes = this.GetContents();
 			ListIterator<GByte> otherSentenceBytes = this.GetContents();
 
 			while(thisSentenceBytes.hasNext())
 			{
-				isIdentical = thisSentenceBytes.next().Equals(otherSentenceBytes.next());
-				
-				if(!isIdentical)
+				if(!thisSentenceBytes.next().Equals(otherSentenceBytes.next()))
 				{
-					break;
+					return false;
 				}
 			}	
 
-			return isIdentical;
+			return true;
 		}
 		else
 		{
@@ -71,22 +67,18 @@ public class GSentence implements GCollection
 	{
 		if(this.GetSize() == otherSentence.GetSize())
 		{
-			boolean isIdentical = false;
-
 			ListIterator<GByte> thisSentenceBytes = this.GetContents();
 			ListIterator<GByte> otherSentenceBytes = this.GetContents();
 
 			while(thisSentenceBytes.hasNext())
 			{
-				isIdentical = thisSentenceBytes.next().QuickEquals(otherSentenceBytes.next());
-				
-				if(!isIdentical)
+				if(!thisSentenceBytes.next().Equals(otherSentenceBytes.next()))
 				{
-					break;
+					return false;
 				}
 			}	
 
-			return isIdentical;
+			return true;
 		}
 		else
 		{
@@ -103,10 +95,7 @@ public class GSentence implements GCollection
 
 		while(thisSentenceBytes.hasNext())
 		{
-			if(thisSentenceBytes.next().Equals(otherSentenceBytes.next()))
-			{
-				++countIdentical;
-			}	
+			countIdentical += thisSentenceBytes.next() == otherSentenceBytes.next()? 1 : 0;
 		}	
 
 		return (float)(countIdentical / this.Contents.size());
@@ -207,6 +196,7 @@ public class GSentence implements GCollection
 
 	public void Merge(int sizeBytes, GEndian endian, GSentence otherSentence)
 	{
+		// TODO : implement this method
 	}
 
 }
