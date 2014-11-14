@@ -200,9 +200,36 @@ public class GSentence implements GCollection
 		return result;
 	} 
 
-	public void Merge(int sizeBytes, GEndian endian, GSentence otherSentence)
+	public void Merge(int sizeBytes, GEndian endian, GSentence otherSentence, int otherSizeBytes, GEndian otherEndian)
 	{
-		// TODO : implement this method
-	}
+		ListIterator<GByte> otherSentenceCutBytes = otherSentence.GetContents(otherSizeBytes, otherEndian);
 
+		this.Cut(sizeBytes, endian);
+
+		if(endian == GEndian.Low)
+		{
+			ArrayList<GByte> resultBytes = new ArrayList<GByte>();
+
+			while(otherSentenceCutBytes.hasNext())
+			{
+				resultBytes.add(otherSentenceCutBytes.next());
+			}
+
+			ListIterator<GByte> thisSentenceCutBytes = this.GetContents();
+
+			while(thisSentenceCutBytes.hasNext())
+			{
+				resultBytes.add(thisSentenceCutBytes.next());
+			}
+
+			this.Contents = resultBytes;
+		}
+		else
+		{
+			while(otherSentenceCutBytes.hasNext())
+			{
+				this.Contents.add(otherSentenceCutBytes.next());
+			}	
+		}
+	}
 }
